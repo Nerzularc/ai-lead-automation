@@ -1,0 +1,15 @@
+{
+  "name": "ai-lead-automation",
+  "version": "1.0.0",
+  "description": "n8n + Claude workflow that validates, scores, logs and routes inbound leads with a rule-based fallback.",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node scripts/build-workflow.mjs",
+    "send-test-leads": "node scripts/send-test-leads.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

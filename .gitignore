@@ -1,0 +1,6 @@
+.env
+node_modules/
+.DS_Store
+*.log
+# Local n8n data if you run n8n outside Docker
+.n8n/
