@@ -1,0 +1,61 @@
+{
+  "name": "Lead Automation — Error Handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "00000065-0000-4000-8000-000000000101",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#automation-alerts"
+        },
+        "text": "=:rotating_light: *Workflow failed:* {{ $json.workflow.name }}\n*Node:* {{ $json.execution.lastNodeExecuted }}\n*Error:* {{ $json.execution.error.message }}\n<{{ $json.execution.url }}|Open execution>",
+        "otherOptions": {}
+      },
+      "id": "00000066-0000-4000-8000-000000000102",
+      "name": "Slack: Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "slackApi": {
+          "id": "REPLACE_ME",
+          "name": "Slack"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Slack: Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}
